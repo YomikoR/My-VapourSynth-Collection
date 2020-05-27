@@ -1,3 +1,22 @@
+# editor
+*/.vscode/
+.vscode/
+*/test*
+test*
+
+# C / C++
+*.exp
+*.lib
+*.exe
+*.dll
+*.obj
+*.asm
+*.S
+
+# VS
+*/vapoursynth/
+vapoursynth/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
