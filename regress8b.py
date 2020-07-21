@@ -53,7 +53,7 @@ def Regress8b(hi, lo, hi_fil, limit=255, crop=0):
                 hfp=core.std.ShufflePlanes(hi_fil, p, vs.GRAY), \
                 limit=limit[p]), [core.std.PlaneStats(hi_lo, plane=p), core.std.PlaneStats(hi_hi, plane=p)])
         sep_res.append(evl)
-    res = core.std.ShufflePlanes(sep_res, [0] * np, vs.YUV)
+    res = core.std.ShufflePlanes(sep_res, [0] * np, hi.format.color_family)
     return res
 
 def Filter8b(clip, filter, limit=255, crop=0):
