@@ -6,7 +6,8 @@ core = vs.core
 
 def Sep16b(clip):
     fmt8 = clip.format.replace(bits_per_sample=8).id
-    hi = core.resize.Point(clip, format=fmt8)
+    hi_div = core.std.Expr(clip, ['x 256 /'], fmt8)
+    hi = core.std.Expr([clip,hi_div], 'y 256 * x > y 1 - y ?', fmt8)
     lo = core.std.Expr([clip,hi], ['x y 256 * -'], fmt8)
     return [hi, lo]
 
