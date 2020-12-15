@@ -1,5 +1,5 @@
 import os
-import multiprocessing as mp
+import multiprocess as mp
 import runpy
 import inspect
 import html
@@ -36,10 +36,10 @@ def get_param(key, decode=True):
 #       params = dict(vol='1', num='3', ext='明')
 #       output_idx = 2
 #   In vpy:
-#       globals()['vol'].decode('utf-8') # gets '1'
-#       num.decode('utf-8')              # gets '3'
+#       globals()['vol'].decode('utf-8') # get '1'
+#       num.decode('utf-8')              # get '3'
 #       from ... import get_param
-#       get_param('ext')                 # gets '明' which is non-ASCII
+#       get_param('ext')                 # get '明' which is non-ASCII
 #       clip.set_output(2)               # output with index 2
 def read_vpy(script, params=dict(), output_idx=0):
     params_ascii = dict()
