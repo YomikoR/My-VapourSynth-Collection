@@ -1,5 +1,4 @@
 import os
-import multiprocess as mp
 import runpy
 import inspect
 import html
@@ -50,7 +49,14 @@ def read_vpy(script, params=dict(), output_idx=0):
 
 # The multiprocessing wrapper to recycle hardware resources (esp. GPU memory)
 def mp_worker(func):
-    p = mp.Pool(processes=1)
-    data = p.apply(func)
-    p.close()
-    return data
+    if os.name == 'posix':
+        import multiprocess as mp
+        p = mp.Pool(processes=1)
+        data = p.apply(func)
+        p.close()
+        return data
+    else:
+        import gc
+        data = func()
+        gc.collect()
+        return data
